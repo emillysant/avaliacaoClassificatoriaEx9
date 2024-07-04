@@ -2,15 +2,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         boolean programaAtivo = true;
-        ArrayList<Alien> aliens = new ArrayList<>(); // Lista para armazenar os alienígenas identificados
+        ArrayList<Alien> aliens = new ArrayList<>();
 
         while (programaAtivo) {
             System.out.println("\n=== Sistema de Controle de Alienígenas ===");
@@ -21,8 +19,7 @@ public class Main {
             System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpa o buffer de entrada
-
+            scanner.nextLine();
             switch (opcao) {
                 case 1:
                     System.out.println("\nIdentificando alienígenas....");
@@ -37,7 +34,6 @@ public class Main {
                 case 3:
                     System.out.println("\nGerando Relatórios: ");
 
-                    // Filtra apenas os alienígenas em quarentena para o relatório
                     ArrayList<Alien> aliensInQuarantine = getAliensInQuarantine(aliens);
                     AlienControlSystem.printAliensReport(aliensInQuarantine);
 
