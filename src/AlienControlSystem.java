@@ -7,12 +7,10 @@ abstract class AlienControlSystem {
 
     public static ArrayList<Alien> monitoringAliens(){
 
-
-        Alien alien3 = new Alien(2, "Krypton", "Kryptoniano", 7.0, "Kal", 20, LocalDateTime.now(), true);
-        Alien alien4 = new Alien(5, "Arrakis", "Gun", 4.0, "Jar", 4.5, LocalDateTime.now(), false);
-
-        Alien alien1 = new Alien(1, SpeciesControlSystem.Vulcaniano(), "Spock", 9.0,LocalDateTime.now(), true);
-        Alien alien2 = new Alien(2, SpeciesControlSystem.Kryptoniano(), "Super", 5.0,LocalDateTime.now(), true);
+        Alien alien1 = new Alien(1, SpeciesControlSystem.Vulcaniano(), "Spock", 9.0, LocalDateTime.now(), true);
+        Alien alien2 = new Alien(2, SpeciesControlSystem.Kryptoniano(), "Super", 5.0, LocalDateTime.now(), true);
+        Alien alien3 = new Alien(3, SpeciesControlSystem.Bacca(), "Kal", 20, LocalDateTime.now(), true);
+        Alien alien4 = new Alien(4, SpeciesControlSystem.Gun(), "Jar", 4.5, LocalDateTime.now(), false);
 
         ArrayList<Alien> aliens = new ArrayList<>();
 
@@ -20,7 +18,8 @@ abstract class AlienControlSystem {
         aliens.add(alien2);
         aliens.add(alien3);
         aliens.add(alien4);
-        return aliens;
+
+        return  aliens;
     }
 
     public static void printAliensFound(ArrayList<Alien> aliens) {
@@ -62,6 +61,16 @@ abstract class AlienControlSystem {
             System.out.println("Em Quarentena: " + alien.isQuarantine());
             System.out.println("------------------------------------------");
         }
+    }
+
+    public static ArrayList<Alien> filterAliensBySpecies(ArrayList<Alien> aliens, String species) {
+        ArrayList<Alien> filteredAliens = new ArrayList<>();
+        for (Alien alien : aliens) {
+            if (alien.getSpecie().equalsIgnoreCase(species)) {
+                filteredAliens.add(alien);
+            }
+        }
+        return filteredAliens;
     }
 
 

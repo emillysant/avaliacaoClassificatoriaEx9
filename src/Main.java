@@ -6,6 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+
         Scanner scanner = new Scanner(System.in);
         boolean programaAtivo = true;
         ArrayList<Alien> aliens = new ArrayList<>();
@@ -15,11 +16,13 @@ public class Main {
             System.out.println("1. Identificar Alienígenas");
             System.out.println("2. Verificar Quarentena");
             System.out.println("3. Gerar Relatório");
-            System.out.println("4. Encerrar Programa");
+            System.out.println("4. Mostrar Alienígenas de uma Espécie");
+            System.out.println("5. Encerrar Programa");
             System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
             scanner.nextLine();
+
             switch (opcao) {
                 case 1:
                     System.out.println("\nIdentificando alienígenas....");
@@ -33,12 +36,24 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("\nGerando Relatórios: ");
-
                     ArrayList<Alien> aliensInQuarantine = getAliensInQuarantine(aliens);
                     AlienControlSystem.printAliensReport(aliensInQuarantine);
-
                     break;
                 case 4:
+                    System.out.println("\nMostrar Alienígenas de uma Espécie:");
+
+                    System.out.print("Digite o nome da espécie: ");
+                    String especie = scanner.nextLine();
+                    ArrayList<Alien> aliensEspecie = AlienControlSystem.filterAliensBySpecies(aliens, especie);
+
+                    if (aliensEspecie.isEmpty()) {
+                        System.out.println("Não foram encontrados alienígenas da espécie " + especie + ".");
+                    } else {
+                        System.out.println("Lista de Alienígenas da Espécie " + especie + ":");
+                        AlienControlSystem.printAliensReport(aliensEspecie);
+                    }
+                    break;
+                case 5:
                     System.out.println("\nEncerrando programa...");
                     programaAtivo = false;
                     break;
@@ -49,8 +64,6 @@ public class Main {
         }
 
         scanner.close();
-
-
     }
 
     private static ArrayList<Alien> getAliensInQuarantine(ArrayList<Alien> aliens) {

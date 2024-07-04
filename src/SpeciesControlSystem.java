@@ -11,4 +11,15 @@ public class SpeciesControlSystem {
         return especie2;
     }
 
+
+    static Species Gun() {
+        Species especie3 = new Species("Arrakis", "Gun", 4.0);
+        return especie3;
+    }
+
+    static Species Bacca() {
+        Species especie4 = new Species("Tatooine", "Bacca", 3.5);
+        return especie4;
+    }
+
 }
